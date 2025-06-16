@@ -1,8 +1,7 @@
 package Managers;
 
+import Actions.ActionWithMany;
 import Common.Element;
-import Ingredients.Ingredient;
-
 import java.util.ArrayList;
 
 public class ReadManager extends Manager {
@@ -19,8 +18,19 @@ public class ReadManager extends Manager {
         }
         choice = scanner.nextInt();
         Element current = ingredients.get(choice);
+        print(current);
+    }
+
+    private void print(Element current){
         while(current != null){
-            System.out.println(current.getDescription());
+            if (current instanceof ActionWithMany) {
+                ActionWithMany actionCurrent = (ActionWithMany) current;
+                System.out.println(actionCurrent.ingredient.getDescription());
+                System.out.println(actionCurrent.secondIngredient.getDescription());
+                print(actionCurrent.secondIngredient);
+            } else {
+                System.out.println(current.getDescription());
+            }
             current = current.getIngredient();
         }
     }

@@ -3,11 +3,13 @@ import Common.Element;
 import Ingredients.Ingredient;
 
 public abstract class Action implements Element {
-
+    public boolean haveMany(){
+        return false;
+    }
     public Element ingredient;
 
-    protected void execute(){
-
+    private Element execute(){
+        return ingredient;
     }
 
 
@@ -18,6 +20,6 @@ public abstract class Action implements Element {
 
     @Override
     public Element getIngredient() {
-        return ingredient;
+        return execute();
     }
 }

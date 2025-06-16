@@ -2,9 +2,10 @@ package Ingredients;
 
 public class Ice  extends Ingredient {
 
-    @Override
-    public String getDescription(){
-        return "Лёд";
+    public Ice(String description, int netto) {
+        super(description, netto);
     }
+
+
 
 }

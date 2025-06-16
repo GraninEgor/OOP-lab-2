@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public class CreateManager extends Manager{
 
-    public CreateManager(ArrayList<Ingredient> ingredients) {
+    public CreateManager(ArrayList<Element> ingredients) {
         super(ingredients);
-        ingredients.add(new CoffeeBeans());
-        ingredients.add(new Ice());
-        ingredients.add(new Milk());
-        ingredients.add(new Syrup());
-        ingredients.add(new Water());
+        ingredients.add(new CoffeeBeans("Кофеное зерно",100));
+        ingredients.add(new Ice("Лёд",100));
+        ingredients.add(new Milk("Молоко",100));
+        ingredients.add(new Syrup("Сироп",100));
+        ingredients.add(new Water("Вода",100));
     }
 
     @Override
@@ -27,26 +27,32 @@ public class CreateManager extends Manager{
                 System.out.println(i + " - " + ingredients.get(i).getDescription());
             }
             choice = scanner.nextInt();
-            temp = ingredients.get(choice);
+            temp = (Ingredient) ingredients.get(choice);
             System.out.println(temp.getDescription());
             showCreateMenu();
             choice = scanner.nextInt();
-            Element newElement;
+            Element newElement = null;
             switch (choice){
                 case 1:
                     newElement = new Add(temp);
                     break;
-                case 2: newElement = new Boil(temp);
+                case 2:
+                    newElement = new Boil(temp);
                     break;
-                case 3: newElement = new Grind(temp);
+                case 3:
+                    newElement = new Grind(temp);
                     break;
-                case 4: newElement = new Mix(temp);
+                case 4:
+                    newElement = new Mix(temp);
                     break;
-                case 5: newElement = new Spill(temp);
+                case 5:
+                    newElement = new Spill(temp);
                     break;
-                case 6: newElement = new Beat(temp);
+                case 6:
+                    newElement = new Beat(temp);
                     break;
             }
+            ingredients.add(newElement);
         }
     }
 

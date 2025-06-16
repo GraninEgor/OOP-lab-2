@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
-    private ArrayList<Ingredient> ingredients = new ArrayList<>();
+    private ArrayList<Element> ingredients = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     Manager createManager = new CreateManager(ingredients);
     Manager readManager = new ReadManager(ingredients);

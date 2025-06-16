@@ -13,5 +13,6 @@ public abstract class Action implements Element {
 
     public Action(Ingredient ingredient){
         this.ingredient = ingredient;
+
     }
 }

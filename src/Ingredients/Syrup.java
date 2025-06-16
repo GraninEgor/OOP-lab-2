@@ -1,8 +1,8 @@
 package Ingredients;
 
 public class Syrup  extends Ingredient {
-    @Override
-    public String getDescription(){
-        return "Сироп";
+    public Syrup(String description, int netto) {
+        super(description, netto);
     }
+
 }

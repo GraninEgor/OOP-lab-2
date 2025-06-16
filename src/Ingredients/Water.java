@@ -1,9 +1,8 @@
 package Ingredients;
 
 public class Water extends Ingredient {
-    @Override
-    public String getDescription(){
-        return "Вода";
+    public Water(String description, int netto) {
+        super(description, netto);
     }
 
     @Override

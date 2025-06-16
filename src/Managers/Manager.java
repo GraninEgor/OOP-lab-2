@@ -1,5 +1,6 @@
 package Managers;
 
+import Common.Element;
 import Ingredients.Ingredient;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.Scanner;
 public abstract class Manager implements ManagerFunctionality {
 
     Scanner scanner = new Scanner(System.in);
-    protected ArrayList<Ingredient> ingredients;
+    protected ArrayList<Element> ingredients;
     protected int getUserChoice() {
         while (!scanner.hasNextInt()) {
             System.out.print("Пожалуйста, введите число: ");
@@ -17,7 +18,7 @@ public abstract class Manager implements ManagerFunctionality {
         return scanner.nextInt();
     }
 
-    public Manager(ArrayList<Ingredient> ingredients){
+    public Manager(ArrayList<Element> ingredients){
         this.ingredients = ingredients;
     }
 }

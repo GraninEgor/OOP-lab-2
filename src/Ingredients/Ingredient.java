@@ -3,10 +3,16 @@ package Ingredients;
 import Common.Element;
 
 public abstract class Ingredient implements Element {
-    protected int netto;
+    private String description;
+    private int netto;
+
 
     public String getDescription(){
-        return "Ингредиент";
+        return description;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
     }
 
 
@@ -19,5 +25,10 @@ public abstract class Ingredient implements Element {
         System.out.println("5. Пролить");
         System.out.println("5. Взбить");
         System.out.print("Выберите действие: ");
+    }
+
+    public Ingredient(String description, int netto){
+        this.description = description;
+        this.netto = netto;
     }
 }

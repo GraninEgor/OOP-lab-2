@@ -10,6 +10,9 @@ public class Grind extends Action {
 
     @Override
     public String getDescription() {
-        return "";
+        if(ingredient.getDescription().equals("Кофейное зерно")){
+            return "Перемолотые кофейные зерна";
+        }
+        return ingredient.getDescription() + " " + "Перемололи";
     }
 }

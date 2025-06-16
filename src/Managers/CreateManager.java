@@ -11,7 +11,7 @@ public class CreateManager extends Manager{
 
     public CreateManager(ArrayList<Element> ingredients) {
         super(ingredients);
-        ingredients.add(new CoffeeBeans("Кофеное зерно",100));
+        ingredients.add(new CoffeeBeans("Кофейное зерно",100));
         ingredients.add(new Ice("Лёд",100));
         ingredients.add(new Milk("Молоко",100));
         ingredients.add(new Syrup("Сироп",100));
@@ -46,7 +46,14 @@ public class CreateManager extends Manager{
                     newElement = new Mix(temp);
                     break;
                 case 5:
-                    newElement = new Spill(temp);
+                    System.out.println("Выыберите через что пролить");
+                    for(int i =0;i<ingredients.size();i++){
+                        if(ingredients.get(i).getDescription().contains("Перемолотое зерно")){
+                            System.out.println(i + " - " + ingredients.get(i).getDescription());
+                        }
+                    }
+                    choice = scanner.nextInt();
+                    newElement = new Spill(temp, (Ingredient) ingredients.get(choice));
                     break;
                 case 6:
                     newElement = new Beat(temp);

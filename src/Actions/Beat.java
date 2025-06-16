@@ -10,6 +10,6 @@ public class Beat extends Action {
 
     @Override
     public String getDescription() {
-        return "";
+        return ingredient.getDescription() + " " + "Взбито";
     }
 }

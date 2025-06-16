@@ -10,6 +10,6 @@ public class Mix extends Action {
 
     @Override
     public String getDescription() {
-        return "";
+        return ingredient.getDescription() + " " + "Перемешали";
     }
 }

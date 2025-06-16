@@ -12,6 +12,16 @@ public class ReadManager extends Manager {
 
     @Override
     public void execute() {
-
+        System.out.println("Вывести:");
+        int choice;
+        for(int i = 0;i<ingredients.size();i++){
+            System.out.println(i + " - " + ingredients.get(i).getDescription());
+        }
+        choice = scanner.nextInt();
+        Element current = ingredients.get(choice);
+        while(current != null){
+            System.out.println(current.getDescription());
+            current = current.getIngredient();
+        }
     }
 }

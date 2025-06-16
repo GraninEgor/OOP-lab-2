@@ -4,7 +4,7 @@ import Common.Element;
 import Ingredients.Ingredient;
 
 public class Mix extends Action {
-    public Mix(Ingredient ingredient) {
+    public Mix(Element ingredient) {
         super(ingredient);
     }
 

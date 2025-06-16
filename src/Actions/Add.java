@@ -4,7 +4,7 @@ import Common.Element;
 import Ingredients.Ingredient;
 
 public class Add extends Action {
-    public Add(Ingredient ingredient) {
+    public Add(Element ingredient) {
         super(ingredient);
     }
 
@@ -12,4 +12,5 @@ public class Add extends Action {
     public String getDescription() {
         return ingredient.getDescription() + " " + "Добавлено";
     }
+
 }

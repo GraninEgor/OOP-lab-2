@@ -21,16 +21,20 @@ public class CreateManager extends Manager{
     @Override
     public void execute() {
         while (true) {
-            Ingredient temp;
+            Element temp;
             int choice;
             for(int i = 0;i<ingredients.size();i++){
                 System.out.println(i + " - " + ingredients.get(i).getDescription());
             }
             choice = scanner.nextInt();
-            temp = (Ingredient) ingredients.get(choice);
+            if(choice == -1){
+                return;
+            }
+            temp = ingredients.get(choice);
             System.out.println(temp.getDescription());
             showCreateMenu();
             choice = scanner.nextInt();
+
             Element newElement = null;
             switch (choice){
                 case 1:
@@ -48,12 +52,12 @@ public class CreateManager extends Manager{
                 case 5:
                     System.out.println("Выыберите через что пролить");
                     for(int i =0;i<ingredients.size();i++){
-                        if(ingredients.get(i).getDescription().contains("Перемолотое зерно")){
+                        if(ingredients.get(i).getDescription().contains("Перемолотые кофейные зерна")){
                             System.out.println(i + " - " + ingredients.get(i).getDescription());
                         }
                     }
                     choice = scanner.nextInt();
-                    newElement = new Spill(temp, (Ingredient) ingredients.get(choice));
+                    newElement = new Spill(temp, ingredients.get(choice));
                     break;
                 case 6:
                     newElement = new Beat(temp);

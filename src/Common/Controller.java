@@ -24,13 +24,13 @@ public class Controller {
                     createManager.execute();
                     break;
                 case 2:
-                    read();
+                    readManager.execute();
                     break;
                 case 3:
-                    update();
+                    updateManager.execute();
                     break;
                 case 4:
-                    delete();
+                    deleteManager.execute();
                     break;
                 case 0:
                     System.out.println("Выход из программы.");
@@ -45,10 +45,10 @@ public class Controller {
 
     private void showMenu() {
         System.out.println("===== Меню CRUD =====");
-        System.out.println("1. Создать (Create)");
-        System.out.println("2. Читать (Read)");
-        System.out.println("3. Обновить (Update)");
-        System.out.println("4. Удалить (Delete)");
+        System.out.println("1. Создать");
+        System.out.println("2. Читать");
+        System.out.println("3. Обновить");
+        System.out.println("4. Удалить");
         System.out.println("0. Выход");
         System.out.print("Выберите ингредиент: ");
     }

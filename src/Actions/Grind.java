@@ -4,7 +4,7 @@ import Common.Element;
 import Ingredients.Ingredient;
 
 public class Grind extends Action {
-    public Grind(Ingredient ingredient) {
+    public Grind(Element ingredient) {
         super(ingredient);
     }
 

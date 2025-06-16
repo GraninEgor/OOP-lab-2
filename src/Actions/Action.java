@@ -4,15 +4,20 @@ import Ingredients.Ingredient;
 
 public abstract class Action implements Element {
 
-    Ingredient ingredient;
+    public Element ingredient;
 
     protected void execute(){
 
     }
 
 
-    public Action(Ingredient ingredient){
+    public Action(Element ingredient){
         this.ingredient = ingredient;
 
+    }
+
+    @Override
+    public Element getIngredient() {
+        return ingredient;
     }
 }

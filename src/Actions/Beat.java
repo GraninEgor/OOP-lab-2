@@ -4,7 +4,7 @@ import Common.Element;
 import Ingredients.Ingredient;
 
 public class Beat extends Action {
-    public Beat(Ingredient ingredient) {
+    public Beat(Element ingredient) {
         super(ingredient);
     }
 

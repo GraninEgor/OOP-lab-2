@@ -11,7 +11,7 @@ public class Controller {
     private Scanner scanner = new Scanner(System.in);
     Manager createManager = new CreateManager(ingredients);
     Manager readManager = new ReadManager(ingredients);
-    Manager updateManager = new UpdateManager(ingredients);
+    Manager updateManager = new UpdateManager(ingredients, createManager);
     Manager deleteManager = new DeleteManager(ingredients);
 
     public void start() {

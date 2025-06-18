@@ -12,6 +12,12 @@ public class DeleteManager extends Manager {
 
     @Override
     public void execute() {
-
+        int choice;
+        System.out.println("Выыберите что удалить");
+        for(int i =0;i<ingredients.size();i++){
+            System.out.println(i + " - " + ingredients.get(i).getDescription());
+        }
+        choice = scanner.nextInt();
+        ingredients.remove(choice);
     }
 }

@@ -17,6 +17,6 @@ public class Spill extends ActionWithMany {
         if(ingredient.getDescription().equals("Вскипяченная вода") && secondIngredient.getDescription().equals("Перемолотые кофейные зерна")){
             return "Эспрессо";
         }
-        return ingredient.getDescription() + " " + "Пролили";
+        return ingredient.getDescription() + " " + "Пролили через" + " " + secondIngredient.getDescription();
     }
 }

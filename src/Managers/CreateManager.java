@@ -38,7 +38,12 @@ public class CreateManager extends Manager{
             Element newElement = null;
             switch (choice){
                 case 1:
-                    newElement = new Add(temp);
+                    System.out.println("Выыберите что добавить");
+                    for(int i =0;i<ingredients.size();i++){
+                        System.out.println(i + " - " + ingredients.get(i).getDescription());
+                    }
+                    choice = scanner.nextInt();
+                    newElement = new Add(temp, ingredients.get(choice));
                     break;
                 case 2:
                     newElement = new Boil(temp);

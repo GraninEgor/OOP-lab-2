@@ -10,6 +10,9 @@ public class Beat extends Action {
 
     @Override
     public String getDescription() {
+        if(ingredient.getDescription().equals("Вскипяченное молоко")){
+            return "Пенка";
+        }
         return ingredient.getDescription() + " " + "Взбито";
     }
 }

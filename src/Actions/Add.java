@@ -2,9 +2,10 @@ package Actions;
 
 import Common.Element;
 
-public class Add extends Action {
-    public Add(Element ingredient) {
+public class Add extends ActionWithMany {
+    public Add(Element ingredient,Element secondIngredient) {
         super(ingredient);
+        this.secondIngredient = secondIngredient;
     }
     @Override
     public boolean haveMany(){
@@ -13,7 +14,10 @@ public class Add extends Action {
 
     @Override
     public String getDescription() {
-        return ingredient.getDescription() + " " + "Добавлено";
+        if((ingredient.getDescription().equals("Эспрессо") && secondIngredient.getDescription().equals("Пенка")) || (ingredient.getDescription().equals("Пенка") && secondIngredient.getDescription().equals("Эспрессо"))){
+            return "Латте";
+        }
+        return ingredient.getDescription() + " " + "Добавлено к " + secondIngredient.getDescription();
     }
 
 }

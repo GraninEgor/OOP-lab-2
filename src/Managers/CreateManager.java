@@ -11,11 +11,11 @@ public class CreateManager extends Manager{
 
     public CreateManager(ArrayList<Element> ingredients) {
         super(ingredients);
-        ingredients.add(new CoffeeBeans("Кофейное зерно",100));
-        ingredients.add(new Ice("Лёд",100));
-        ingredients.add(new Milk("Молоко",100));
-        ingredients.add(new Syrup("Сироп",100));
-        ingredients.add(new Water("Вода",100));
+        ingredients.add(new CoffeeBeans("Кофейное зерно",20));
+        ingredients.add(new Ice("Лёд",50));
+        ingredients.add(new Milk("Молоко",150));
+        ingredients.add(new Syrup("Сироп",10));
+        ingredients.add(new Water("Вода",150));
     }
 
     @Override
@@ -24,7 +24,7 @@ public class CreateManager extends Manager{
             Element temp;
             int choice;
             for(int i = 0;i<ingredients.size();i++){
-                System.out.println(i + " - " + ingredients.get(i).getDescription());
+                System.out.println(i + " - " + ingredients.get(i).getDescription()+ " " + ingredients.get(i).getNetto());
             }
             choice = scanner.nextInt();
             if(choice == -1){
@@ -38,12 +38,19 @@ public class CreateManager extends Manager{
             Element newElement = null;
             switch (choice){
                 case 1:
-                    System.out.println("Выыберите что добавить");
-                    for(int i =0;i<ingredients.size();i++){
-                        System.out.println(i + " - " + ingredients.get(i).getDescription());
+                    ArrayList<Element> ingredientsForAdd = new ArrayList<>();
+                    while(true){
+                        System.out.println("Выыберите что добавить");
+                        for(int i =0;i<ingredients.size();i++){
+                            System.out.println(i + " - " + ingredients.get(i).getDescription()+ " " + ingredients.get(i).getNetto());
+                        }
+                        choice = scanner.nextInt();
+                        if(choice == -1){
+                            break;
+                        }
+                        ingredientsForAdd.add(ingredients.get(choice));
                     }
-                    choice = scanner.nextInt();
-                    newElement = new Add(temp, ingredients.get(choice));
+                    newElement = new Add(temp, ingredientsForAdd);
                     break;
                 case 2:
                     newElement = new Boil(temp);
@@ -58,7 +65,7 @@ public class CreateManager extends Manager{
                     System.out.println("Выыберите через что пролить");
                     for(int i =0;i<ingredients.size();i++){
                         if(ingredients.get(i).getDescription().contains("Перемолотые кофейные зерна")){
-                            System.out.println(i + " - " + ingredients.get(i).getDescription());
+                            System.out.println(i + " - " + ingredients.get(i).getDescription()+ " " + ingredients.get(i).getNetto());
                         }
                     }
                     choice = scanner.nextInt();

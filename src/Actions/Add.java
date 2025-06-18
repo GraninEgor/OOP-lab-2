@@ -2,10 +2,13 @@ package Actions;
 
 import Common.Element;
 
+import java.util.ArrayList;
+
 public class Add extends ActionWithMany {
-    public Add(Element ingredient,Element secondIngredient) {
+    public ArrayList<Element> ingredients;
+    public Add(Element ingredient,ArrayList<Element> ingredients) {
         super(ingredient);
-        this.secondIngredient = secondIngredient;
+        this.ingredients = ingredients;
     }
     @Override
     public boolean haveMany(){
@@ -14,10 +17,22 @@ public class Add extends ActionWithMany {
 
     @Override
     public String getDescription() {
-        if((ingredient.getDescription().equals("Эспрессо") && secondIngredient.getDescription().equals("Пенка")) || (ingredient.getDescription().equals("Пенка") && secondIngredient.getDescription().equals("Эспрессо"))){
+        if((ingredients.get(0).getDescription().equals("Эспрессо") && ingredients.get(1).getDescription().equals("Пенка")) || (ingredients.get(0).getDescription().equals("Пенка") && ingredients.get(1).getDescription().equals("Эспрессо"))){
             return "Латте";
         }
-        return ingredient.getDescription() + " " + "Добавлено к " + secondIngredient.getDescription();
+        String newDescription = ingredient.getDescription();
+        for(Element ingredient:ingredients){
+            newDescription += " + " + ingredient.getDescription();
+        }
+        return newDescription;
     }
 
+    @Override
+    public int getNetto(){
+        int netto = ingredient.getNetto();
+        for(Element ingredient:ingredients){
+            netto+= ingredient.getNetto();
+        }
+        return netto;
+    }
 }

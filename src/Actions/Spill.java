@@ -19,4 +19,9 @@ public class Spill extends ActionWithMany {
         }
         return ingredient.getDescription() + " " + "Пролили через" + " " + secondIngredient.getDescription();
     }
+
+    @Override
+    public int getNetto(){
+        return ingredient.getNetto() + secondIngredient.getNetto();
+    }
 }

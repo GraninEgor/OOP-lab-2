@@ -23,4 +23,9 @@ public abstract class Ingredient implements Element {
     public Element getIngredient() {
         return null;
     }
+
+    @Override
+    public int getNetto(){
+        return netto;
+    }
 }

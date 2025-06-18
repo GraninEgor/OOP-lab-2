@@ -22,4 +22,9 @@ public abstract class Action implements Element {
     public Element getIngredient() {
         return execute();
     }
+
+    @Override
+    public int getNetto(){
+        return ingredient.getNetto();
+    }
 }

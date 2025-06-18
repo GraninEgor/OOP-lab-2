@@ -11,11 +11,11 @@ public class CreateManager extends Manager{
 
     public CreateManager(ArrayList<Element> ingredients) {
         super(ingredients);
-        ingredients.add(new CoffeeBeans("Кофейное зерно",20));
-        ingredients.add(new Ice("Лёд",50));
-        ingredients.add(new Milk("Молоко",150));
-        ingredients.add(new Syrup("Сироп",10));
-        ingredients.add(new Water("Вода",150));
+        ingredients.add(new CoffeeBeans("Кофейное зерно",0));
+        ingredients.add(new Ice("Лёд",0));
+        ingredients.add(new Milk("Молоко",0));
+        ingredients.add(new Syrup("Сироп",0));
+        ingredients.add(new Water("Вода",0));
     }
 
     @Override
@@ -23,14 +23,18 @@ public class CreateManager extends Manager{
         while (true) {
             Element temp;
             int choice;
+            int netto;
             for(int i = 0;i<ingredients.size();i++){
-                System.out.println(i + " - " + ingredients.get(i).getDescription()+ " " + ingredients.get(i).getNetto());
+                System.out.println(i + " - " + ingredients.get(i).getDescription() + " " + ingredients.get(i).getNetto());
             }
             choice = scanner.nextInt();
             if(choice == -1){
                 return;
             }
             temp = ingredients.get(choice);
+            System.out.println("Введите нетто: ");
+            netto = scanner.nextInt();
+            temp.setNetto(netto);
             System.out.println(temp.getDescription());
             showCreateMenu();
             choice = scanner.nextInt();

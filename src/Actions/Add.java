@@ -4,7 +4,7 @@ import Common.Element;
 
 import java.util.ArrayList;
 
-public class Add extends ActionWithMany {
+public class Add extends Action {
     public ArrayList<Element> ingredients;
     public Add(Element ingredient,ArrayList<Element> ingredients) {
         super(ingredient);

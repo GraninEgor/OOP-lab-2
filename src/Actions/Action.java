@@ -27,4 +27,8 @@ public abstract class Action implements Element {
     public int getNetto(){
         return ingredient.getNetto();
     }
+
+    public void setNetto(int netto){
+        ingredient.setNetto(netto);
+    }
 }

@@ -19,36 +19,32 @@ public class ReadManager extends Manager {
         }
         choice = scanner.nextInt();
         Element current = ingredients.get(choice);
-        int level = 1;
+        int level = 0;
+        System.out.println("-".repeat(level) + " " + current.getDescription());
         print(current, level);
+
     }
 
     private void print(Element current, int level){
-        while(current != null){
-            if(level == 0) {
-                System.out.println(current.getDescription());
+        if(current == null){
+            return;
+        }
+        if(current instanceof Add){
+            System.out.println("-".repeat(level) + " " + current.getIngredient().getDescription());
+            print(current.getIngredient(),level+1);
+            for(Element addIngredient : ((Add) current).ingredients){
+                System.out.println("-".repeat(level) + " " + addIngredient.getDescription());
+                print(addIngredient,level+1);
             }
-            if (current instanceof ActionWithMany) {
-                if(current instanceof Add){
-                    System.out.println("-".repeat(level) + " " + ((Add) current).ingredient.getDescription());
-                    for(Element ingredient : ((Add) current).ingredients){
-                        System.out.println("-".repeat(level) + " " + ingredient.getDescription());
-                    }
-                    for(Element Iningredient : ((Add) current).ingredients){
-                        print(Iningredient,level+1);
-                    }
-                    print(current.getIngredient(),level+1);
-                }
-                else{
-                    ActionWithMany actionCurrent = (ActionWithMany) current;
-                    System.out.println("-".repeat(level) + " " + actionCurrent.ingredient.getDescription());
-                    System.out.println("-".repeat(level) + " " +actionCurrent.secondIngredient.getDescription());
-                    print(actionCurrent.secondIngredient, level + 1);
-                }
-            } else {
-                System.out.println("-".repeat(level) + " " +current.getDescription());
-            }
-            current = current.getIngredient();
+        }
+        else if(current instanceof ActionWithMany){
+            System.out.println("-".repeat(level) + " " + ((ActionWithMany) current).secondIngredient.getDescription());
+            print(((ActionWithMany) current).ingredient,level+1);
+            print(((ActionWithMany) current).secondIngredient,level+1);
+        }
+        else{
+            System.out.println("-".repeat(level) + " " + current.getDescription());
+            print(current.getIngredient(),level+1);
         }
     }
 }

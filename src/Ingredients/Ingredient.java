@@ -6,6 +6,10 @@ public abstract class Ingredient implements Element {
     private String description;
     private int netto;
 
+    public void setNetto(int netto){
+        this.netto = netto;
+    }
+
     public String getDescription(){
         return description;
     }

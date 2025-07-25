@@ -25,7 +25,7 @@ public class CreateManager extends Manager{
             int choice;
             int netto;
             for(int i = 0;i<ingredients.size();i++){
-                System.out.println(i + " - " + ingredients.get(i).getDescription() + " " + ingredients.get(i).getNetto());
+                System.out.println(i + " - " + ingredients.get(i).getDescription() + " " + ((i>4) ? ingredients.get(i).getNetto() : ""));
             }
             choice = scanner.nextInt();
             if(choice == -1){
@@ -43,16 +43,21 @@ public class CreateManager extends Manager{
             switch (choice){
                 case 1:
                     ArrayList<Element> ingredientsForAdd = new ArrayList<>();
+                    Element tempAdd;
                     while(true){
                         System.out.println("Выыберите что добавить");
                         for(int i =0;i<ingredients.size();i++){
-                            System.out.println(i + " - " + ingredients.get(i).getDescription()+ " " + ingredients.get(i).getNetto());
+                            System.out.println(i + " - " + ingredients.get(i).getDescription()+ " " + ((i>4) ? ingredients.get(i).getNetto() : ""));
                         }
                         choice = scanner.nextInt();
                         if(choice == -1){
                             break;
                         }
-                        ingredientsForAdd.add(ingredients.get(choice));
+                        tempAdd = ingredients.get(choice);
+                        System.out.println("Введите нетто: ");
+                        netto = scanner.nextInt();
+                        tempAdd.setNetto(netto);
+                        ingredientsForAdd.add(tempAdd);
                     }
                     newElement = new Add(temp, ingredientsForAdd);
                     break;

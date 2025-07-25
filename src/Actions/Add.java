@@ -10,10 +10,6 @@ public class Add extends Action {
         super(ingredient);
         this.ingredients = ingredients;
     }
-    @Override
-    public boolean haveMany(){
-        return true;
-    }
 
     @Override
     public String getDescription() {

@@ -27,9 +27,9 @@ public class CreateManager extends Manager{
                 return;
             }
             temp = ingredients.get(choice);
-            System.out.println("Введите нетто: ");
-            netto = scanner.nextInt();
-            temp.setNetto(netto);
+            if(temp instanceof Ingredient) {
+                ((Ingredient) temp).setNetto();
+            }
             System.out.println(temp.getDescription());
             showCreateMenu();
             choice = scanner.nextInt();
@@ -49,9 +49,9 @@ public class CreateManager extends Manager{
                             break;
                         }
                         tempAdd = ingredients.get(choice);
-                        System.out.println("Введите нетто: ");
-                        netto = scanner.nextInt();
-                        tempAdd.setNetto(netto);
+                        if(temp instanceof Ingredient) {
+                            ((Ingredient) temp).setNetto();
+                        }
                         ingredientsForAdd.add(tempAdd);
                     }
                     newElement = new Add(temp, ingredientsForAdd);

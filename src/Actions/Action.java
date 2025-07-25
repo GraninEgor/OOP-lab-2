@@ -1,26 +1,15 @@
 package Actions;
 import Common.Element;
-import Ingredients.Ingredient;
 
 public abstract class Action implements Element {
-    public boolean haveMany(){
-        return false;
-    }
-    public Element ingredient;
-
-    private Element execute(){
-        return ingredient;
-    }
-
+    protected Element ingredient;
 
     public Action(Element ingredient){
         this.ingredient = ingredient;
-
     }
 
-    @Override
     public Element getIngredient() {
-        return execute();
+        return ingredient;
     }
 
     @Override
@@ -28,7 +17,4 @@ public abstract class Action implements Element {
         return ingredient.getNetto();
     }
 
-    public void setNetto(int netto){
-        ingredient.setNetto(netto);
-    }
 }

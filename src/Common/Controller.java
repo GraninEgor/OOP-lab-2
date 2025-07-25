@@ -47,7 +47,7 @@ public class Controller {
         System.out.println("3. Обновить");
         System.out.println("4. Удалить");
         System.out.println("0. Выход");
-        System.out.print("Выберите ингредиент: ");
+        System.out.print("Выберите действие: ");
     }
 
     private int getUserChoice() {

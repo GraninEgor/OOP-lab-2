@@ -8,17 +8,7 @@ public class Spill extends ActionWithMany {
         super(ingredient);
         this.secondIngredient = secondIngredient;
     }
-    @Override
-    public boolean haveMany(){
-        return true;
-    }
-    @Override
-    public String getDescription() {
-        if(ingredient.getDescription().equals("Вскипяченная вода") && secondIngredient.getDescription().equals("Перемолотые кофейные зерна")){
-            return "Эспрессо";
-        }
-        return ingredient.getDescription() + " " + "Пролили через" + " " + secondIngredient.getDescription();
-    }
+
 
     @Override
     public int getNetto(){

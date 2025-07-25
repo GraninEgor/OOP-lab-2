@@ -1,18 +1,15 @@
 package Common;
 
-import Ingredients.*;
 import Managers.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
-    private ArrayList<Element> ingredients = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
-    Manager createManager = new CreateManager(ingredients);
-    Manager readManager = new ReadManager(ingredients);
-    Manager updateManager = new UpdateManager(ingredients, createManager);
-    Manager deleteManager = new DeleteManager(ingredients);
+    private final Scanner scanner = new Scanner(System.in);
+    private final Manager createManager;
+    private final Manager readManager;
+    private final Manager updateManager;
+    private final Manager deleteManager;
 
     public void start() {
         while (true) {
@@ -61,19 +58,10 @@ public class Controller {
         return scanner.nextInt();
     }
 
-
-    private void read() {
-        System.out.println("Вы выбрали: Читать");
+    public Controller(Manager createManager, Manager deleteManager, Manager updateManager, Manager readManager) {
+        this.createManager = createManager;
+        this.deleteManager = deleteManager;
+        this.updateManager = updateManager;
+        this.readManager = readManager;
     }
-
-    private void update() {
-        System.out.println("Вы выбрали: Обновить");
-    }
-
-    private void delete() {
-        System.out.println("Вы выбрали: Удалить");
-    }
-
-
-
 }

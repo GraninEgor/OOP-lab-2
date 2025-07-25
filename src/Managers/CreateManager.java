@@ -11,11 +11,6 @@ public class CreateManager extends Manager{
 
     public CreateManager(ArrayList<Element> ingredients) {
         super(ingredients);
-        ingredients.add(new CoffeeBeans("Кофейное зерно",0));
-        ingredients.add(new Ice("Лёд",0));
-        ingredients.add(new Milk("Молоко",0));
-        ingredients.add(new Syrup("Сироп",0));
-        ingredients.add(new Water("Вода",0));
     }
 
     @Override

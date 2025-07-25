@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public abstract class Manager implements ManagerFunctionality {
 
-    Scanner scanner = new Scanner(System.in);
+    protected Scanner scanner = new Scanner(System.in);
     protected ArrayList<Element> ingredients;
     protected int getUserChoice() {
         while (!scanner.hasNextInt()) {

@@ -18,9 +18,9 @@ public abstract class Ingredient implements Element {
     }
 
     public void setNetto() {
-        System.out.println("Введите нетто: ");
+        System.out.println("Enter the netto: ");
         while (!scanner.hasNextInt()) {
-            System.out.println("Ошибка! Введите целое число: ");
+            System.out.println("Mistake! Enter an integer: ");
             scanner.next();
         }
         this.netto = scanner.nextInt();

@@ -39,7 +39,8 @@ public class CreateManager extends Manager{
                     ArrayList<Element> elementsForAdd = new ArrayList<>();
                     Element tempAdd;
                     while(true){
-                        System.out.println("Выыберите что добавить");
+                        System.out.println("Choose what to add");
+                        System.out.println("To exit, enter (-1)");
                         for(int i =0;i<elements.size();i++){
                             System.out.println(i + " - " + elements.get(i).getDescription()+ " " + ((i>4) ? elements.get(i).getNetto() : ""));
                         }
@@ -66,11 +67,6 @@ public class CreateManager extends Manager{
                     break;
                 case 5:
                     System.out.println("Choose what to put through");
-                    for(int i =0;i<elements.size();i++){
-                        if(elements.get(i).getDescription().contains("Перемолотые кофейные зерна")){
-                            System.out.println(i + " - " + elements.get(i).getDescription()+ " " + elements.get(i).getNetto());
-                        }
-                    }
                     choice = scanner.nextInt();
                     newElement = new Spill(temp, elements.get(choice));
                     break;
@@ -83,13 +79,14 @@ public class CreateManager extends Manager{
     }
 
     private void showCreateMenu() {
-        System.out.println("===== Меню Создания =====");
+        System.out.println("===== Menu =====");
         System.out.println("1. Add");
         System.out.println("2. Boid");
         System.out.println("3. Grind");
         System.out.println("4. Mix");
         System.out.println("5. Spill");
         System.out.println("6. Beat");
+        System.out.println("To exit, enter (-1)");
         System.out.print("Select an action: ");
     }
 

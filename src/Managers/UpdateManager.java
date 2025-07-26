@@ -23,7 +23,7 @@ public class UpdateManager extends Manager {
 
         System.out.println("Select an element to update (or -1 to cancel):");
         for (int i = 0; i < elements.size(); i++) {
-            System.out.println(i + " - " + elements.get(i).getDescription() + " (Net weight: " + elements.get(i).getNetto() + ")");
+            System.out.println(i + " - " + elements.get(i).getDescription());
         }
         System.out.print("Your choice: ");
 
@@ -62,7 +62,7 @@ public class UpdateManager extends Manager {
                 while (true) {
                     System.out.println("\nCurrent added ingredients for '" + addAction.getDescription() + "':");
                     for (int i = 0; i < addAction.ingredients.size(); i++) {
-                        System.out.println(i + " - " + addAction.ingredients.get(i).getDescription());
+                        System.out.println(i + " - " + addAction.ingredients.get(i).getDescription() + " (Net weight: " + addAction.ingredients.get(i).getNetto() + ")");
                     }
                     System.out.println("\nChoose an option:");
                     System.out.println("1. Add another ingredient");
@@ -81,15 +81,29 @@ public class UpdateManager extends Manager {
                         case 1:
                             System.out.println("Select an ingredient to add:");
                             for (int i = 0; i < elements.size(); i++) {
-                                System.out.println(i + " - " + elements.get(i).getDescription());
+                                System.out.println(i + " - " + elements.get(i).getDescription() );
                             }
                             System.out.print("Enter ingredient number to add: ");
                             int ingredientToAddIndex = scanner.nextInt();
                             scanner.nextLine();
 
                             if (ingredientToAddIndex >= 0 && ingredientToAddIndex < elements.size()) {
-                                addAction.ingredients.add(elements.get(ingredientToAddIndex));
-                                System.out.println(elements.get(ingredientToAddIndex).getDescription() + " added.");
+                                Element elementToAdd = elements.get(ingredientToAddIndex);
+
+                                 if (elementToAdd instanceof Ingredient && elementToAdd.getNetto() == 0) {
+                                    System.out.print("Enter netto weight for " + elementToAdd.getDescription() + " (for addition): ");
+                                    while (!scanner.hasNextInt()) {
+                                        System.out.println("Invalid input. Please enter an integer:");
+                                        scanner.next();
+                                    }
+                                    int newNettoForAddedIngredient = scanner.nextInt();
+                                    scanner.nextLine();
+                                    ((Ingredient) elementToAdd).setNetto(newNettoForAddedIngredient);
+                                    System.out.println(elementToAdd.getDescription() + " netto set to " + newNettoForAddedIngredient + ".");
+                                }
+
+                                addAction.ingredients.add(elementToAdd);
+                                System.out.println(elementToAdd.getDescription() + " added to " + addAction.getDescription() + ".");
                             } else {
                                 System.out.println("Invalid ingredient number.");
                             }

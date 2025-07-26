@@ -41,7 +41,7 @@ public class Controller {
     }
 
     private void showMenu() {
-        System.out.println("===== Меню CRUD =====");
+        System.out.println("===== Menu CRUD =====");
         System.out.println("1. Create");
         System.out.println("2. Read");
         System.out.println("3. Update");

@@ -4,47 +4,68 @@ import Actions.ActionWithMany;
 import Actions.Add;
 import Common.Element;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 
 public class ReadManager extends Manager {
-    public ReadManager(ArrayList<Element> ingredients) {
-        super(ingredients);
+    public ReadManager(ArrayList<Element> elements) {
+        super(elements);
     }
 
     @Override
     public void execute() {
-        System.out.println("Вывести:");
-        int choice;
-        for(int i = 0;i<ingredients.size();i++){
-            System.out.println(i + " - " + ingredients.get(i).getDescription());
+        System.out.println("===== View Element =====");
+        if (elements.isEmpty()) {
+            System.out.println("Element list is empty. Nothing to display.");
+            return;
         }
-        choice = scanner.nextInt();
-        Element current = ingredients.get(choice);
-        int level = 0;
-        System.out.println("-".repeat(level) + " " + current.getDescription());
-        print(current, level);
 
+        System.out.println("Select an element to view (or -1 to cancel):");
+        for(int i = 0; i < elements.size(); i++){
+            System.out.println(i + " - " + elements.get(i).getDescription() + " (Net weight: " + elements.get(i).getNetto() + ")");
+        }
+        System.out.print("Your choice: ");
+
+        try {
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (choice == -1) {
+                System.out.println("Viewing cancelled.");
+                return;
+            }
+
+            if (choice < 0 || choice >= elements.size()) {
+                System.out.println("Invalid choice. Element with this number does not exist.");
+                return;
+            }
+
+            Element current = elements.get(choice);
+            System.out.println("\n--- Element Details: '" + current.getDescription() + "' ---");
+            System.out.println("Total Net Weight: " + current.getNetto());
+            print(current, 0);
+            System.out.println("----------------------------------------");
+        } catch (InputMismatchException e) {
+            System.out.println("Input error. Please enter a number.");
+            scanner.nextLine();
+        }
     }
 
     private void print(Element current, int level){
-        if(current == null){
-            return;
+        String indent = "  ".repeat(level);
+        if (level > 0) {
+            System.out.println(indent + "- " + current.getDescription() + " (Net weight: " + current.getNetto() + ")");
         }
-        if(current instanceof Add){
-            System.out.println("-".repeat(level) + " " + current.getIngredient().getDescription());
-            print(current.getIngredient(),level+1);
-            for(Element addIngredient : ((Add) current).ingredients){
-                System.out.println("-".repeat(level) + " " + addIngredient.getDescription());
-                print(addIngredient,level+1);
+
+        List<Element> constituents = current.getConstituentElements();
+        if (!constituents.isEmpty()) {
+            if (level == 0) {
+                System.out.println(indent + "  Composition:");
             }
-        }
-        else if(current instanceof ActionWithMany){
-            System.out.println("-".repeat(level) + " " + ((ActionWithMany) current).secondIngredient.getDescription());
-            print(((ActionWithMany) current).ingredient,level+1);
-            print(((ActionWithMany) current).secondIngredient,level+1);
-        }
-        else{
-            System.out.println("-".repeat(level) + " " + current.getDescription());
-            print(current.getIngredient(),level+1);
+
+            for (Element constituent : constituents) {
+                print(constituent, level + 1);
+            }
         }
     }
 }

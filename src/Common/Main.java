@@ -15,7 +15,7 @@ public class Main {
         elements.add(new Water());
         Manager createManager = new CreateManager(elements);
         Manager readManager = new ReadManager(elements);
-        Manager updateManager = new UpdateManager(elements, createManager);
+        Manager updateManager = new UpdateManager(elements);
         Manager deleteManager = new DeleteManager(elements);
         Controller controller = new Controller(createManager,deleteManager,updateManager,readManager);
         controller.start();

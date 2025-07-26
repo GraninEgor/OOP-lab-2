@@ -10,12 +10,6 @@ public class Boil extends Action {
 
     @Override
     public String getDescription() {
-        if(ingredient.getDescription().equals("Вода")){
-            return "Вскипяченная вода";
-        }
-        if(ingredient.getDescription().equals("Молоко")){
-            return "Вскипяченное молоко";
-        }
-        return ingredient.getDescription() + " " + "Вкипитили";
+        return ingredient.getDescription() + " " + "Boiled";
     }
 }

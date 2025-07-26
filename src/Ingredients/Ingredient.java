@@ -2,11 +2,13 @@ package Ingredients;
 
 import Common.Element;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
 public abstract class Ingredient implements Element {
-    protected Scanner scanner;
+    protected Scanner scanner = new Scanner(System.in);
 
     private String description;
     private int netto = 0;
@@ -15,7 +17,6 @@ public abstract class Ingredient implements Element {
         this.description = description;
     }
 
-    @Override
     public void setNetto() {
         System.out.println("Введите нетто: ");
         while (!scanner.hasNextInt()) {
@@ -33,6 +34,16 @@ public abstract class Ingredient implements Element {
     @Override
     public int getNetto() {
         return netto;
+    }
+
+    @Override
+    public void setNetto(int netto) {
+        this.netto = netto;
+    }
+
+    @Override
+    public List<Element> getConstituentElements() {
+        return Collections.emptyList();
     }
 
     public Ingredient(String description) {

@@ -30,10 +30,10 @@ public class Controller {
                     deleteManager.execute();
                     break;
                 case 0:
-                    System.out.println("Выход из программы.");
+                    System.out.println("Exit.");
                     return;
                 default:
-                    System.out.println("Неверный выбор. Попробуйте снова.");
+                    System.out.println("Wrong choice. Try again.");
             }
 
             System.out.println();
@@ -42,17 +42,17 @@ public class Controller {
 
     private void showMenu() {
         System.out.println("===== Меню CRUD =====");
-        System.out.println("1. Создать");
-        System.out.println("2. Читать");
-        System.out.println("3. Обновить");
-        System.out.println("4. Удалить");
-        System.out.println("0. Выход");
-        System.out.print("Выберите действие: ");
+        System.out.println("1. Create");
+        System.out.println("2. Read");
+        System.out.println("3. Update");
+        System.out.println("4. Delete");
+        System.out.println("0. Exit");
+        System.out.print("Select an action: ");
     }
 
     private int getUserChoice() {
         while (!scanner.hasNextInt()) {
-            System.out.print("Пожалуйста, введите число: ");
+            System.out.print("Please enter the number: ");
             scanner.next();
         }
         return scanner.nextInt();

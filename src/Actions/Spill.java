@@ -1,7 +1,6 @@
 package Actions;
 
 import Common.Element;
-import Ingredients.Ingredient;
 
 public class Spill extends ActionWithMany {
     public Spill(Element ingredient, Element secondIngredient) {
@@ -11,7 +10,12 @@ public class Spill extends ActionWithMany {
 
 
     @Override
-    public int getNetto(){
+    public int getNetto() {
         return ingredient.getNetto() + secondIngredient.getNetto();
+    }
+
+    @Override
+    public void setNetto(int netto) {
+        System.out.println("Cannot directly set netto for a 'Spill' action. Update its constituent ingredients instead.");
     }
 }
